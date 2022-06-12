@@ -2,15 +2,15 @@
 
 <html>
     <head>
-        <title>Dama</title>
-        <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+        <title> Dama </title>
+        <link rel="stylesheet" href="{ { url_for('static', path='/style.css') } }">
     </head>
     <body>
         <div class="wrapper">
             <div class="menu-btns">
-                <button id="sameDeviceBtn" class="menu-button">Jogar Sozinho</button>
-                <button id="firstDevicesBtn" class="menu-button">Convidar</button>
-                <button id="secondDeviceBtn" class="menu-button">Entrar</button>
+                <button id="sameDeviceBtn" class="menu-button"> Jogar Sozinho </button>
+                <button id="firstDevicesBtn" class="menu-button"> Convidar </button>
+                <button id="secondDeviceBtn" class="menu-button"> Entrar </button>
             </div>
             <div class="board" id="board"></div>
             <div class="game-menu invisible underlayer">
@@ -18,7 +18,7 @@
                 </div>
             </div>
         </div>
-        <script type='module' src="{{ url_for('static', path='/index.js') }}"></script>
-        <script type='module' src="{{ url_for('static', path='/ws.js') }}"></script>
+        <script type='module' src="{ { url_for('static', path='/index.js') } }"> </script>
+        <script type='module' src="{ { url_for('static', path='/ws.js') } }"> </script>
     </body>
 </html>
