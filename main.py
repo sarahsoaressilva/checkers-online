@@ -11,8 +11,10 @@ from pydantic import BaseModel
 app = FastAPI()
 
 # Monta os códigos independentes em um só lugar.  
-# Arquivos que não estão inclusos em static podem gerar erros de API.
+# Para evitar erros na API, add uma pasta na API.
 app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/templates", StaticFiles(directory="templates"), name="templates")
+app.mount("/img", StaticFiles(directory="img"), name="img")
 
 
 # Inicializa o Jinja com repositório em templates de forma estática.
