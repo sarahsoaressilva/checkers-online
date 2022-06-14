@@ -12,9 +12,11 @@ app = FastAPI()
 
 # Monta os códigos independentes em um só lugar.  
 # Para evitar erros na API, add uma pasta na API.
+# Deve-se reiniciar o servidor após adicionar, se não, não pega.
 app.mount("/static", StaticFiles(directory="static"), name="static")
 app.mount("/templates", StaticFiles(directory="templates"), name="templates")
 app.mount("/img", StaticFiles(directory="img"), name="img")
+app.mount("/css", StaticFiles(directory="css"), name="css")
 
 
 # Inicializa o Jinja com repositório em templates de forma estática.
@@ -80,6 +82,12 @@ async def get_home(request: Request):
 # API que retorna o board do jogo como resposta.
 # Recebe o objeto Request do FastAPI/Starlette como parâmetro.
 # Request, neste caso, é o pedido feito pelo usuário para o servidor.
+
+
+@app.get("/cadastrar", response_class=HTMLResponse)
+async def get_home(request: Request):
+    return templates.TemplateResponse("cadastro.html", {"request": request} )
+
 
 @app.get("/board", response_class=HTMLResponse)
 async def get_game(request: Request):
