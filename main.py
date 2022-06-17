@@ -48,7 +48,7 @@ async def get_home(request: Request):
     return templates.TemplateResponse("cadastro.html", {"request": request} )
 
 # modificado para .post
-@app.post("/board", response_class=HTMLResponse)
+@app.get("/board", response_class=HTMLResponse)
 async def get_game(request: Request):
 
     # Variável do Jinja + Função de retorno de um template.
