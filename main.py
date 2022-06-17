@@ -36,7 +36,7 @@ templates = Jinja2Templates(directory="templates")
 # Não pode ser .post
 @app.get("/", response_class=HTMLResponse)
 async def get_home(request: Request):
-    return templates.TemplateResponse("index.php", {"request": request})
+    return templates.TemplateResponse("index.html", {"request": request})
 
 # API que retorna o board do jogo como resposta.
 # Recebe o objeto Request do FastAPI/Starlette como parâmetro.
