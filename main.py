@@ -20,6 +20,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 app.mount("/templates", StaticFiles(directory="templates"), name="templates")
 app.mount("/img", StaticFiles(directory="img"), name="img")
 app.mount("/css", StaticFiles(directory="css"), name="css")
+app.mount("/utils", StaticFiles(directory="utils"), name="utils")
 
 
 # Inicializa o Jinja com repositório em templates de forma estática.
