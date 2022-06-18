@@ -1,17 +1,16 @@
 from crypt import methods
-import email
+
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi.requests import Request
-from typing import List, Dict
-from pandas import read_sql_query
-from pydantic import BaseModel
+
+from utils.user import user, pesquisaUser
+
 
 # Declara o uso da FastAPI
 app = FastAPI()
-
 
 # Monta os códigos independentes em um só lugar.  
 # Para evitar erros na API, add uma pasta na API.
@@ -27,14 +26,8 @@ app.mount("/utils", StaticFiles(directory="utils"), name="utils")
 # Ele procura dentro do diretório pelos templates.
 templates = Jinja2Templates(directory="templates")
 
-
-# Inicia a tela do jogo.
-# Teste possível em 127.0.0.1:8000/docs.
-# Ao colocar 127.0.0.1:8000/game, realiza um response_class=HTMLResponse. 
-# Isso significa que ele retorna um HTML como resposta. 
-
 # API que retorna o index do jogo (tela de login)
-# Não pode ser .post
+
 @app.get("/", response_class=HTMLResponse)
 async def get_home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
@@ -43,9 +36,11 @@ async def get_home(request: Request):
 # Recebe o objeto Request do FastAPI/Starlette como parâmetro.
 # Request, neste caso, é o pedido feito pelo usuário para o servidor.
 
+# Inclui as rotas de login e cadastro.
+app.include_router(user)
 
 @app.get("/cadastrar", response_class=HTMLResponse)
-async def get_home(request: Request):
+async def get_cadastro(request: Request):
     return templates.TemplateResponse("cadastro.html", {"request": request} )
 
 # modificado para .post
