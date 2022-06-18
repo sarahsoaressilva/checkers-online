@@ -79,12 +79,22 @@ button {
     height: 10vmin;
 }
 
+/*deixa o "X" de fechar do modal escondido*/
+.close {display: none;}
+
+.modal {
+    background-color: rgba(154, 16, 50, 0.9);
+}
+
 .menu-button {
     width: 26%;
     height: 10vmin;
-    background-color: #9a1032;
+    background-color: #c02b2b;
     color: white;
     font-weight: bold;
+    padding: 10;
+    border: none;
+    outline: none;
 }
 
 .game-menu {
