@@ -88,3 +88,5 @@ document.getElementById('sameDeviceBtn').onclick = startNewGame;
 document.getElementById('firstDevicesBtn').onclick = inviteSecondPlayer;
 
 document.getElementById('secondDeviceBtn').onclick = join;
+
+

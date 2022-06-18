@@ -9,11 +9,13 @@ user = APIRouter()
 @user.post("/login")
 async def login(user: User):
 
-    return User.email, User.password;
-    #username = request.form['username'];
-    #password = request.form['password'];
+    print(user)
 
-    #if ( pesquisaUser(username, password) ):
+    email = user.email;
+    password = user.password;
+
+    #return pesquisaUser(email, password);
+
     #    return templates.TemplateResponse("board.html", {"request": request})
 
 
