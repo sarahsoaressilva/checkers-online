@@ -1,20 +1,17 @@
 from fastapi import APIRouter, Request
 from sympy import false
-from .db import con 
+from .db import con
 from models.model import users
-from schemas.schema import User 
+from schemas.schema import User
 
 user = APIRouter()
 
+
 @user.post("/login")
 async def login(user: User):
-
-    print(user)
-
-    email = user.email;
-    password = user.password;
-
-    #return pesquisaUser(email, password);
+    email = user.email
+    password = user.password
+    # return pesquisaUser(email, password);
 
     #    return templates.TemplateResponse("board.html", {"request": request})
 
@@ -31,6 +28,8 @@ def get_users(user_id: int):
 '''
 
 # Criar usuarios
+
+
 @user.post("/cadastro")
 def create_users(user: User):
 
@@ -39,24 +38,23 @@ def create_users(user: User):
         "username": user.username,
         "email": user.email,
         "password": user.password
-    };
+    }
 
-    # print(new_user); 
+    # print(new_user);
     # Query de Insert na Tabela.
-    result = con.execute( users.insert().values(new_user) );
-    print(result); # Responde um cursor como sucesso.
-    return con.execute( users.select().where(users.c.user_id == result.lastrowid) ).first()
-
+    result = con.execute(users.insert().values(new_user))
+    print(result)  # Responde um cursor como sucesso.
+    return con.execute(users.select().where(users.c.user_id == result.lastrowid)).first()
 
 
 # Pesquisa de usuário para o login
-def pesquisaUser(email: str, passwrd: str): 
-    
-    result = con.execute( 
+def pesquisaUser(email: str, passwrd: str):
+
+    result = con.execute(
         users.select().where(
-            users.c.email == email and users.c.password == passwrd) 
-        ).first()
-    
+            users.c.email == email and users.c.password == passwrd)
+    ).first()
+
     if (result):
         return True
     else:
