@@ -197,12 +197,14 @@ button {
     margin: 0 auto;
     color: white;
     font-weight: bold;
+    outline: none;
 }
 
 .newGameBtn,
 .invitation {
     background-color: green;
     border-radius: 4px;
+    outline: none;
 }
 
 .cancelBtn,
@@ -210,6 +212,7 @@ button {
 .send-btn {
     background-color: rgb(210, 12, 12);
     border-radius: 4px;
+    outline: none;
 }
 
 .input-board-id {
