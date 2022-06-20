@@ -1,5 +1,4 @@
 from fastapi import APIRouter, Request
-from sympy import false
 from .db import con
 from models.model import users
 from schemas.schema import User
