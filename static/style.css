@@ -223,15 +223,21 @@ button {
 }
 
 .sound{
-    border: none;
-    padding: 10px 25px;
-    font-size: 22px;
-    line-height: 40px;
-    min-width: 150px;
-    text-align: center;
-    cursor: pointer;
-    background: linear-gradient(to right bottom, #fcfcfc, #2bc041);
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bold;
+    background-color: #c02b2b;
+    color: white;
+    width: 14vmin;
+    outline: none;
+    border-radius: 4px;
+    padding: 10px;
+    transition: ease-out 0.3s;
+    font-size: 1rem;
+    background: linear-gradient(to right bottom, #2cff15, #2bc041);
     border-radius: 5px;
-
     height:50px;
+}
+
+.sound:hover{
+    box-shadow: inset 300px 0 0 0 #00891b;
 }
