@@ -1,3 +1,4 @@
+
 // Modelagem JSON tabuleiro
 const tabuleiro = [
     {
@@ -43,10 +44,10 @@ function listarTabuleiros() {
     // Lista todos os itens de tabuleiro.
     tabuleiro.map( (tab) => {
  
-        console.log("Id: " + tab.id);
-        console.log("Nome do Tabuleiro: " + tab.nome);
-        console.log("Descrição: " + tab.descricao);
-        console.log("Valor (R$): " + tab.valor);
+        //console.log("Id: " + tab.id);
+        //console.log("Nome do Tabuleiro: " + tab.nome);
+        //console.log("Descrição: " + tab.descricao);
+        //console.log("Valor (R$): " + tab.valor);
 
         containerTabuleiro.innerHTML += `
 
@@ -74,10 +75,10 @@ function listarImagensFundo() {
     // Lista todos os itens de tabuleiro.
     fundo.map( (fundo ) => {
  
-        console.log("Id: " + fundo.id);
-        console.log("Nome da Img de Fundo: " + fundo.nome);
-        console.log("Descrição: " + fundo.descricao);
-        console.log("Valor (R$): " + fundo.valor);
+        //console.log("Id: " + fundo.id);
+        //console.log("Nome da Img de Fundo: " + fundo.nome);
+        //console.log("Descrição: " + fundo.descricao);
+        //console.log("Valor (R$): " + fundo.valor);
 
         containerFundo.innerHTML += `
 
