@@ -49,14 +49,19 @@ export const startNewGame = () => {
 }
 
 export const inviteSecondPlayer = () => {
+    
     menu.textContent = '';
     gameMenu.classList.remove("invisible", "underlayer");
+
     const getRandomId = max => {
         return Math.floor(Math.random() * max);
     }
+
     let client_id = getRandomId(10000);
+
     const invitation = document.createElement('div');
     invitation.classList.add('invitation');
+
     invitation.textContent = "Informe esse número ao outro jogador. Quando ele colocar o código, o jogo começará.";
     menu.appendChild(invitation);
 
