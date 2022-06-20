@@ -8,6 +8,7 @@ user = APIRouter()
 
 @user.post("/login")
 async def login(user: User):
+    print(user)
     email = user.email
     password = user.password
     return pesquisaUser(email, password);

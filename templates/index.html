@@ -14,7 +14,6 @@
     -->
 
     <link rel="stylesheet" href="/css/sign-in.css">
-    <script src="/static/login.js"></script>
     
 </head>
 
@@ -42,26 +41,38 @@
             </div>
             <script>
                 function Post() {
+                    var response = "";
                     var email = document.getElementById("email").value;
                     var password = document.getElementById("password").value;
                     var xhttp = new XMLHttpRequest();
                     xhttp.onreadystatechange = function() {
                         if (this.readyState == 4 && this.status == 200) {
-                            document.getElementById("demo").innerHTML = this.responseText;
+                            console.log(this.responseText);
+                            response = this.responseText;
+                            console.log(typeof((this.responseText)));
                         }
                     };
-                    xhttp.open("POST", "http://127.0.0.1:8000/login", true);
+                    xhttp.open("POST", "http://127.0.0.1:8000/login", false);
                     xhttp.setRequestHeader("Content-type", "application/json");
                     xhttp.send(JSON.stringify({
                         "email": email,
                         "password": password
-                    }));
+                    }));      
 
-                    console.log(xhttp.responseText);
+                    return (xhttp.responseText);
+                }
+
+                function login() {
+                    var responseText = Post();
+                    if (responseText == "true") {
+                        window.location.href = "/board";
+                    } else {
+                        alert("Usuário ou senha incorretos");
+                    }
                 }
             </script>
 
-            <button class="w-100 mt-3 btn btn-lg btn-primary" type="submit" onclick="Post()"> Entrar </button>
+            <button class="w-100 mt-3 btn btn-lg btn-primary" type="submit" onclick="login()"> Entrar </button>
             <a class="w-100 mt-2 btn btn-lg btn-secondary" href="cadastrar" type="submit"> Cadastrar </a> 
             <a class="font-weight-light convitemsg" type="submit" href="board"> Tem um convite? Clique aqui! </a>
         
