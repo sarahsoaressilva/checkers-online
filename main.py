@@ -60,7 +60,7 @@ async def get_game(request: Request):
 
 @app.get("/loja", response_class=HTMLResponse)
 async def getLoja(request: Request):
-    return templates.TemplateResponse("planos.html", {"request": request})
+    return templates.TemplateResponse("loja.html", {"request": request})
 
 @app.get("/loja/planos", response_class=HTMLResponse)
 async def getPlanos(request: Request):
