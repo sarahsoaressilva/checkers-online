@@ -9,15 +9,12 @@ user = APIRouter()
 @user.post("/login")
 async def login(user: User):
 
-    print(user)
+    print(user);
 
     email = user.email;
     password = user.password;
 
-    #return pesquisaUser(email, password);
-
-    #    return templates.TemplateResponse("board.html", {"request": request})
-
+    # return pesquisaUser(email, password);
 
 # Login do usuário (de acordo com ID)
 # Erro ao por no navegador. Entra em conflito com o /cadastrar.
