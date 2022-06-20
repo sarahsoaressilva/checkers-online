@@ -5,12 +5,17 @@ from schemas.schema import User
 
 user = APIRouter()
 
+
 @user.post("/login")
 async def login(user: User):
     print(user)
     email = user.email
     password = user.password
-    return pesquisaUser(email, password);
+
+    if (email == "" or password == ""):
+        return False
+    else:
+        return pesquisaUser(email, password)
 
     #    return templates.TemplateResponse("board.html", {"request": request})
 

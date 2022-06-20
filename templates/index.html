@@ -31,19 +31,21 @@
 
             <div class="form-floating">
                 <input type="email" class="form-control" id="email" name="email"
-                placeholder="name@example.com">
+                placeholder="name@example.com" role="presentation" autocomplete="novo-login">
                 <label for="floatingInput"> Email </label>
             </div>
             <div class="form-floating">
                 <input type="password" class="form-control" 
-                id="password" placeholder="Password" name="password">
+                id="password" placeholder="Password" name="password" role="presentation" autocomplete="off"  >
                 <label for="floatingPassword"> Senha </label>
             </div>
             <script>
                 function Post() {
                     var response = "";
                     var email = document.getElementById("email").value;
+                    console.log(email);
                     var password = document.getElementById("password").value;
+                    console.log(password);
                     var xhttp = new XMLHttpRequest();
                     xhttp.onreadystatechange = function() {
                         if (this.readyState == 4 && this.status == 200) {
@@ -58,13 +60,14 @@
                         "email": email,
                         "password": password
                     }));      
-
+                    email = "";
+                    password = "";
                     return (xhttp.responseText);
                 }
 
                 function login() {
                     var responseText = Post();
-                    if (responseText == "true") {
+                    if (responseText == "true") {           
                         window.location.href = "/board";
                     } else {
                         alert("Usuário ou senha incorretos");
@@ -73,7 +76,7 @@
             </script>
 
             <button class="w-100 mt-3 btn btn-lg btn-primary" type="submit" onclick="login()"> Entrar </button>
-            <a class="w-100 mt-2 btn btn-lg btn-secondary" href="cadastrar" type="submit"> Cadastrar </a> 
+            <a class="w-100 mt-2 btn btn-lg btn-secondary" href="/templates/cadastro.html" type="submit"> Cadastrar </a> 
             <a class="font-weight-light convitemsg" type="submit" href="board"> Tem um convite? Clique aqui! </a>
         
     </main>
