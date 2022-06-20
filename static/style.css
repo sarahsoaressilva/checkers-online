@@ -137,8 +137,7 @@ button {
     background-color: white;
     left: 40%;
     top: 20vmin;
-    background-color: lightgrey;
-    border: solid 5px darkgrey;
+    border-radius: 10px;
 }
 
 @media screen and (orientation: portrait) {
@@ -203,12 +202,14 @@ button {
 .newGameBtn,
 .invitation {
     background-color: green;
+    border-radius: 4px;
 }
 
 .cancelBtn,
 .ws-id,
 .send-btn {
-    background-color: blue;
+    background-color: rgb(210, 12, 12);
+    border-radius: 4px;
 }
 
 .input-board-id {
