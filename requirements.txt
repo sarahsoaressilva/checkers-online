@@ -21,3 +21,4 @@ websockets==10.1
 fastapi==0.78.0
 pydantic==1.8.2
 SQLAlchemy==1.4.32
+pymysql==1.0.2
