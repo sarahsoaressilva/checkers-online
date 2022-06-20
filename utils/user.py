@@ -6,15 +6,13 @@ from schemas.schema import User
 
 user = APIRouter()
 
-
 @user.post("/login")
 async def login(user: User):
     email = user.email
     password = user.password
-    # return pesquisaUser(email, password);
+    return pesquisaUser(email, password);
 
     #    return templates.TemplateResponse("board.html", {"request": request})
-
 
 # Login do usuário (de acordo com ID)
 # Erro ao por no navegador. Entra em conflito com o /cadastrar.
