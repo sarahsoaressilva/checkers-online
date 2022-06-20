@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 async function postForm(){
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
@@ -25,3 +26,8 @@ async function postForm(){
     
     //console.log(response);
 } 
+=======
+
+// Language: javascript
+// Path: static/login.js
+>>>>>>> refs/remotes/origin/main
