@@ -1,7 +1,6 @@
 from tokenize import String
 from sqlalchemy import Table, Column, true
 from sqlalchemy.sql.sqltypes import Integer, String
-from tables import Col
 from utils.db import meta, engine
 
 users = Table("users", meta, 
