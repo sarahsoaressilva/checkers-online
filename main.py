@@ -18,6 +18,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 # Monta os códigos independentes em um só lugar.
 # Para evitar erros na API, add uma pasta na API.
 # Deve-se reiniciar o servidor após adicionar, se não, não pega.
@@ -33,11 +34,6 @@ app.mount("/utils", StaticFiles(directory="utils"), name="utils")
 templates = Jinja2Templates(directory="templates")
 
 # API que retorna o index do jogo (tela de login)
-<<<<<<< HEAD
-=======
-
-
->>>>>>> refs/remotes/origin/main
 @app.get("/", response_class=HTMLResponse)
 async def get_home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
@@ -50,15 +46,9 @@ app.include_router(user)
 async def get_cadastro(request: Request):
     return templates.TemplateResponse("cadastro.html", {"request": request})
 
-<<<<<<< HEAD
 # API que retorna o board do jogo como resposta.
 # Recebe o objeto Request do FastAPI/Starlette como parâmetro.
 # Request, neste caso, é o pedido feito pelo usuário para o servidor.
-=======
-# modificado para .post
-
-
->>>>>>> refs/remotes/origin/main
 @app.get("/board", response_class=HTMLResponse)
 async def get_game(request: Request):
 
@@ -68,23 +58,6 @@ async def get_game(request: Request):
 @app.get("/loja", response_class=HTMLResponse)
 async def getLoja(request: Request):
     return templates.TemplateResponse("loja.html", {"request": request})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # Classe de Conexão do Jogo.
 class ConnectionManager:
