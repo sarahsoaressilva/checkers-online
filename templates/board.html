@@ -1,24 +1,109 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-
-
+<!DOCTYPE html>
 <html>
     <head>
         <title> Dama </title>
+        <!--Dependencias-->
         <link rel="stylesheet" href="/static/style.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     </head>
+
     <body>
-        <div class="wrapper">
-            <div class="menu-btns">
-                <button id="sameDeviceBtn" class="menu-button"> Jogar Sozinho </button>
-                <button id="firstDevicesBtn" class="menu-button"> Convidar </button>
-                <button id="secondDeviceBtn" class="menu-button"> Entrar </button>
-            </div>
-            <div class="board" id="board"></div>
-            <div class="game-menu invisible underlayer">
-                <div class="menu">
+        <!-- Modal Example do Bootstrap -->
+        <div class="modal fade bd-example-modal-xl" id="exampleModal" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl" data-keyboard="false" data-backdrop="static" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="exampleModalLabel">Bem-vindo ao Checkers Online !</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" data-keyboard="false" data-backdrop="static">
+                        <div class="col-md-12 text-center">
+                            <img class="img-responsive" src="../img/checkers_icon.png" alt="" height="180" width="180">
+                            <h3 class="h3" style="text-align: center;">Escolha seu modo de jogo: </h3>
+                            <button type="button" id="sameDeviceBtn" class="menu-button"> Jogar Sozinho </button>
+                            <button type="button" id="secondDeviceBtn" class="menu-button"> Entrar partida </button>
+                            <button type="button" id="firstDeviceBtn" class="menu-button"> Convidar amigo </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
+
+        <!-- "Wrapper" Class embrulha/envolve, outros objetos afim de adicionar um atributo  -->
+            <div class="wrapper">
+            <div class="board" id="board"></div>
+            <div class="game-menu invisible underlayer">
+                <div class="menu"></div>
+            </div>
+
+    
+                <audio id="audio1">
+                    <source src="../sounds/beep.mp3" type="audio/mpeg">
+                </audio>
+
+                <audio id="audio_crowd">
+                    <source src="../sounds/soccer_crowd_sound.mp3" type="audio/mpeg">
+                </audio>
+
+                <button id="soccer_crowd_play" class="sound" onclick="playPause()">Play Sound &#9658;</button>
+                <button id="soccer_crowd_stop" class="sound" onclick="playPause()">Stop Sound &#9658;</button>
+            
+
+        <script>
+            var audio = document.getElementById("audio_crowd");
+            var playPauseBTN = document.getElementById("soccer_crowd_play");
+            var count = 0;
+
+            function playPause(){
+                if(count == 0){
+                    count = 1;
+                    audio.play();
+            }else{
+                count = 0;
+                audio.pause();
+                playPauseBTN.innerHTML = "Play Sound &#9658;";
+                }
+            }
+
+            //Ao carregar a página, o modal é exibido na tela
+           $(document).ready(function(){
+                $('#exampleModal').modal('show', {backdrop: "static ", keyboard: false });
+            }); 
+
+            //Ao clicar em algo, o modal é fechado
+            $(document).click(function() {
+                    $('#exampleModal').modal('hide');
+                });
+
+            $('#sameDeviceBtn').click(function(){
+                $('#audio1')[0].play();
+            });
+            $('#secondDeviceBtn').click(function(){
+                $('#audio1')[0].play();
+            });
+            $('#firstDeviceBtn').click(function(){
+                $('#audio1')[0].play();
+            });
+
+            $('#soccer_crowd_play').click(function(){
+                $('#audio_crowd')[0].play();
+            });
+
+            $('#soccer_crowd_stop').click(function(){
+                $('#audio_crowd')[1].stop();
+            });
+
+            var beepOne= $("#beep")[0];
+            $(".nav").mouseenter(function(){
+                    BeepOne.play();
+            });
+        </script>
         <script type='module' src="/static/index.js"> </script>
         <script type='module' src="/static/ws.js"> </script>
     </body>
