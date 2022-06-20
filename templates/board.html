@@ -51,11 +51,26 @@
                     <source src="../sounds/soccer_crowd_sound.mp3" type="audio/mpeg">
                 </audio>
 
-                <button id="soccer_crowd_play" class="sound">Play Sound &#9658;</button>
-                <button id="soccer_crowd_stop" class="sound">Stop Sound &#9658;</button>
+                <button id="soccer_crowd_play" class="sound" onclick="playPause()">Play Sound &#9658;</button>
+                <button id="soccer_crowd_stop" class="sound" onclick="playPause()">Stop Sound &#9658;</button>
             
 
         <script>
+            var audio = document.getElementById("audio_crowd");
+            var playPauseBTN = document.getElementById("soccer_crowd_play");
+            var count = 0;
+
+            function playPause(){
+                if(count == 0){
+                    count = 1;
+                    audio.play();
+            }else{
+                count = 0;
+                audio.pause();
+                playPauseBTN.innerHTML = "Play Sound &#9658;";
+                }
+            }
+
             //Ao carregar a página, o modal é exibido na tela
            $(document).ready(function(){
                 $('#exampleModal').modal('show', {backdrop: "static ", keyboard: false });
