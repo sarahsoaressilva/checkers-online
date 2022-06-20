@@ -52,7 +52,7 @@
                             console.log(typeof((this.responseText)));
                         }
                     };
-                    xhttp.open("POST", "http://127.0.0.1:8000/login", false);
+                    xhttp.open("POST", "/login", false);
                     xhttp.setRequestHeader("Content-type", "application/json");
                     xhttp.send(JSON.stringify({
                         "email": email,
