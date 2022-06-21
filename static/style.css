@@ -114,13 +114,13 @@ button {
 .menu-button {
     font-family: 'Roboto Mono', monospace;
     font-weight: bold;
-    background-color: #c02b2b;
+    /*background-color: #c02b2b;*/
     color: white;
     outline: none;
     border-radius: 4px;
-    width: 70%;
+    /*width: 70%;
     max-height: 10%;
-    padding: 10px;
+    padding: 10px;*/
     transition: ease-out 0.3s;
     font-size: 1rem;
 }
