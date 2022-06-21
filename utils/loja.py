@@ -14,7 +14,10 @@ async def compraTabuleiro(tab: Tabuleiro):
 @loja.get("/tabuleiros")
 async def getTabuleiros():
     result = con.execute( tabuleiros.select() ).fetchall();
-    
-    # print( type(result) );
+    # print( type(result) ); # list
+    return result;
+
+
+   
     
 

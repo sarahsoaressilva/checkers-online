@@ -1,32 +1,23 @@
 
 // Modelagem JSON tabuleiro
-const tabuleiro = [
-    {
-        id: 0,
-        nome: 'xxx',
-        descricao: 'xxx',
-        img: 'https://i.pinimg.com/564x/02/3f/44/023f448eae59c7d5c71069bed1dd7670.jpg',
-        valor: 0
-    }
-];
+const getJSON = async url => {
+    const response = await fetch(url);
+    if( !response.ok ) // check if response not worked (no 404 errors etc...)
+      throw new Error(response.statusText);
+  
+    const data = response.json(); // get JSON from the response
+    return data; // returns a promise, which resolves to this data value
+  }
+
+var tabuleiros = getJSON('/tabuleiros');
+
+console.log( tabuleiros );
 
 
-// Modelagem JSON tabuleiro
+
+
+// Modelagem JSON imagens de fundo
 const fundo = [
-    {
-        id: 0,
-        nome: 'xxxxx',
-        descricao: 'xxxx',
-        img: 'https://a.travel-assets.com/findyours-php/viewfinder/images/res40/71000/71115-Maracana-Stadium.jpg',
-        valor: 0
-    },
-    {
-        id: 0,
-        nome: 'xxxxx',
-        descricao: 'xxxx',
-        img: 'https://a.travel-assets.com/findyours-php/viewfinder/images/res40/71000/71115-Maracana-Stadium.jpg',
-        valor: 0
-    },
     {
         id: 0,
         nome: 'xxxxx',
@@ -38,11 +29,12 @@ const fundo = [
 
 
 // Lista os tabuleiros na tela de loja.
+
 function listarTabuleiros() {
     var containerTabuleiro = document.getElementById('tabuleiros');
     
     // Lista todos os itens de tabuleiro.
-    tabuleiro.map( (tab) => {
+    tabuleiros.map( (tab) => {
  
         //console.log("Id: " + tab.id);
         //console.log("Nome do Tabuleiro: " + tab.nome);
@@ -68,6 +60,7 @@ function listarTabuleiros() {
     );
 }
 
+/*
 // Lista os tabuleiros na tela de loja.
 function listarImagensFundo() {
     var containerFundo = document.getElementById('imagensFundo');
@@ -102,3 +95,5 @@ function listarImagensFundo() {
 
 listarTabuleiros();
 listarImagensFundo();
+
+*/
