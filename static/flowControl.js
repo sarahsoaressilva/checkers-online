@@ -16,6 +16,7 @@ export const flowControl = boardState => {
         pickMan(boardState, btn);
         return;
     }
+    // Seleciona a peça a ser movida e não obrigatório o ataque
     if (!boardState.mustAttack && boardState.isPicked) { // Moving ahead
         moveAhead(boardState);
         if (boardState.isRemote) {
@@ -23,6 +24,8 @@ export const flowControl = boardState => {
         }
         return;
     }
+
+    // Seleciona a peça a ser atacada e não pode se movimentar
     if (boardState.mustAttack && !boardState.isPicked) { // We can only pick those, who has to attack
         boardState.attackScenarios.forEach(scenario => {
             if (scenario.initial.y == parseInt(btn.dataset.y) && scenario.initial.x == parseInt(btn.dataset.x)) {
@@ -31,6 +34,8 @@ export const flowControl = boardState => {
         });
         return;
     }
+
+    //Come a peça a ser atacada
     if (boardState.mustAttack && boardState.isPicked) {
         strike(boardState);
         return;
