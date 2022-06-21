@@ -7,6 +7,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.requests import Request
 
 from utils.user import user, pesquisaUser
+from utils.loja import loja
 
 
 # Declara o uso da FastAPI
@@ -39,32 +40,32 @@ templates = Jinja2Templates(directory="templates")
 # API que retorna o index do jogo (tela de login)
 @app.get("/", response_class=HTMLResponse)
 async def get_home(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse("index.html", {"request": request});
 
 # Inclui as rotas de login e cadastro.
-app.include_router(user)
+app.include_router(user);
 
 
 @app.get("/cadastrar", response_class=HTMLResponse)
 async def get_cadastro(request: Request):
-    return templates.TemplateResponse("cadastro.html", {"request": request})
+    return templates.TemplateResponse("cadastro.html", {"request": request});
 
 # API que retorna o board do jogo como resposta.
 # Recebe o objeto Request do FastAPI/Starlette como parâmetro.
 # Request, neste caso, é o pedido feito pelo usuário para o servidor.
 @app.get("/board", response_class=HTMLResponse)
 async def get_game(request: Request):
+    return templates.TemplateResponse("board.html", {"request": request});
 
-    # Variável do Jinja + Função de retorno de um template.
-    return templates.TemplateResponse("board.html", {"request": request})
+app.include_router(loja);
 
 @app.get("/loja", response_class=HTMLResponse)
 async def getLoja(request: Request):
-    return templates.TemplateResponse("loja.html", {"request": request})
+    return templates.TemplateResponse("loja.html", {"request": request});
 
 @app.get("/loja/planos", response_class=HTMLResponse)
 async def getPlanos(request: Request):
-    return templates.TemplateResponse("planos.html", {"request": request})
+    return templates.TemplateResponse("planos.html", {"request": request});
 
 # Classe de Conexão do Jogo.
 class ConnectionManager:
