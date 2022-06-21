@@ -16,7 +16,7 @@
             <div class="modal-dialog modal-xl" data-keyboard="false" data-backdrop="static" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h2 class="modal-title" id="exampleModalLabel">Bem-vindo ao Checkers Online !</h5>
+                        <h2 class="modal-title" id="exampleModalLabel"> Bem-vindo ao Damas Online !</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -24,10 +24,11 @@
                     <div class="modal-body" data-keyboard="false" data-backdrop="static">
                         <div class="col-md-12 text-center">
                             <img class="img-responsive" src="../img/checkers_icon.png" alt="" height="180" width="180">
-                            <h3 class="h3" style="text-align: center;">Escolha seu modo de jogo: </h3>
+                            <h3 class="h3" style="text-align: center;"> Escolha seu modo de jogo: </h3>
                             <button type="button" id="sameDeviceBtn" class="menu-button btn btn-danger btn-sm"><b> Jogar Sozinho </b></button>
                             <button type="button" id="secondDeviceBtn" class="menu-button btn btn-danger btn-sm"><b> Entrar partida </b></button>
                             <button type="button" id="firstDevicesBtn" class="menu-button btn btn-danger btn-sm"><b> Convidar amigo </b></button>
+                            <a type="button" id="abrirLoja" class="menu-button btn btn-success btn-sm" href="/loja"><b> Entrar na Loja </b></a>
                         </div>
                     </div>
                 </div>
@@ -92,6 +93,10 @@
             });
             
             $('#firstDevicesBtn').click(function(){
+                $('#audio1')[0].play();
+            });
+
+            $('#abrirLoja').click(function(){
                 $('#audio1')[0].play();
             });
 

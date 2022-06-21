@@ -15,11 +15,12 @@ const getJSON = async url => {
     return data; 
   }
 
-// Pega os dados e transforma de forma usável.
+
 
 function listarTabuleiros() {
     var containerTabuleiro = document.getElementById('tabuleiros');
 
+    // Pega os dados e transforma de forma usável.
     getJSON(urlTab).then( 
         function( response ) { // Transforma em uma lista de JSONs usável.
         
@@ -49,9 +50,11 @@ function listarTabuleiros() {
                 <h3 class="card-title"> ` + tab_nome + ` </h3>
                 <p class="card-text"> R$ ` + tab_valor + `</p>
                 <p class="card-text"> `+ tab_descricao + `</p>
+            </div>
+            <div class="card-footer">
                 <button type="button" class="btn btn-danger" id=`+ tab_id + `> Comprar </button>
             </div>
-            
+
             </div>
             <br>
         ` 

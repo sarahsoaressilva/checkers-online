@@ -23,7 +23,7 @@ export const startNewGame = () => {
     
     const newGameBtn = document.createElement("button");
     newGameBtn.classList.add('newGameBtn');
-    newGameBtn.textContent = 'Novo Jogo';
+    newGameBtn.textContent = 'Jogar!';
     newGameBtn.onclick = function() {
         connectionEstablished = false;
         for (let key of Object.keys(defaultBoardState)) {
