@@ -65,13 +65,14 @@
         </div>
 
             <div class="wrapper">
-            <div class="board" id="board"></div>
-            <div class="text-center">
-                <div class="game-menu invisible underlayer">
-                    <div class="menu"></div>
+            
+                <div class="board" id="board"></div>
+                <div class="text-center">
+                    <div class="game-menu invisible underlayer">
+                        <div class="menu"></div>
+                    </div>
                 </div>
-                
-            </div>
+            
 
             <audio id="audio1">
                 <source src="../sounds/beep.mp3" type="audio/mpeg">
@@ -83,7 +84,9 @@
 
             <button id="soccer_crowd_play" class="sound" onclick="playPause()">Play Sound &#9658;</button>
             <button id="soccer_crowd_stop" class="sound" onclick="playPause()">Stop Sound &#9658;</button>
-
+        
+        </div>
+        
         <script>
             var audio = document.getElementById("audio_crowd");
             var playPauseBTN = document.getElementById("soccer_crowd_play");

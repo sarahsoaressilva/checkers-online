@@ -6,7 +6,6 @@ from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi.requests import Request
 from starlette.responses import RedirectResponse
-from yarg import get 
 
 from utils.user import user, pesquisaUser
 from utils.loja import loja

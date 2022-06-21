@@ -5,7 +5,6 @@ from schemas.schema import User
 
 user = APIRouter();
 
-global player
 player = 1;
 
 @user.post("/login")
@@ -62,9 +61,14 @@ def pesquisaUser(email: str, passwrd: str):
     global player
     player = userInfo[0];
 
+    print('Variavel Pesquisa User')
     print(player)
   
     if (result):
         return True
     else:
         return False
+
+
+print('Variavel Global')
+print(player);
