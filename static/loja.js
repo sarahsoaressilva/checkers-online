@@ -1,17 +1,26 @@
 
-// Modelagem JSON tabuleiro
+const urlTab = '/tabuleiros'
+
 const getJSON = async url => {
     const response = await fetch(url);
-    if( !response.ok ) // check if response not worked (no 404 errors etc...)
+
+    // check if response not worked (no 404 errors etc...)
+    if( !response.ok ) 
       throw new Error(response.statusText);
   
-    const data = response.json(); // get JSON from the response
-    return data; // returns a promise, which resolves to this data value
+    // get JSON from the response  
+    const data = await response.json(); 
+
+    // returns a promise, which resolves to this data value
+    return data; 
   }
 
-var tabuleiros = getJSON('/tabuleiros');
-
-console.log( tabuleiros );
+// Pega os dados e transforma de forma usável.
+getJSON(urlTab).then( 
+    function(response) {
+    console.log(response)
+}
+);
 
 
 
@@ -29,6 +38,7 @@ const fundo = [
 
 
 // Lista os tabuleiros na tela de loja.
+
 
 function listarTabuleiros() {
     var containerTabuleiro = document.getElementById('tabuleiros');
@@ -60,7 +70,7 @@ function listarTabuleiros() {
     );
 }
 
-/*
+
 // Lista os tabuleiros na tela de loja.
 function listarImagensFundo() {
     var containerFundo = document.getElementById('imagensFundo');
@@ -96,4 +106,3 @@ function listarImagensFundo() {
 listarTabuleiros();
 listarImagensFundo();
 
-*/
