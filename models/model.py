@@ -19,6 +19,16 @@ Column("img", String(300) ),
 Column("plano_id", Integer )
 )
 
+imagensFundo = Table("imagens_fundo", meta,
+Column("fundo_id", Integer, primary_key=True),
+Column("nome", String(255) ),
+Column("descricao", String(255) ),
+Column("valor", Float ),
+Column("img", String(300) ),
+Column("plano_id", Integer )
+)
+
+
 compras = Table("compra_user", meta,
 Column("compra_id", Integer, primary_key=True),
 Column("user_id", Integer ),

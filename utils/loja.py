@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Request
 from .db import con
-from models.model import tabuleiros, compras
+from models.model import tabuleiros, compras, imagensFundo
 from schemas.schema import Tabuleiro, Compra
 
 loja = APIRouter()
@@ -26,6 +26,12 @@ async def compraTabuleiro(compraTab: Compra):
 @loja.get("/tabuleiros")
 async def getTabuleiros():
     result = con.execute( tabuleiros.select() ).fetchall();
+    # print( type(result) ); # list
+    return result;
+
+@loja.get("/imagensFundo")
+async def getImagensFundo():
+    result = con.execute( imagensFundo.select() ).fetchall();
     # print( type(result) ); # list
     return result;
 

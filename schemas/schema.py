@@ -17,6 +17,14 @@ class Tabuleiro(BaseModel):
     img: str
     plano_id: Optional[int]
 
+class ImagensFundo(BaseModel):
+    fundo_id: Optional[int]
+    nome: str
+    descricao: str
+    valor: float
+    img: str
+    plano_id: Optional[int]
+
 # Modelagem para Compras
 class Compra(BaseModel):
     compra_id: Optional[int]
