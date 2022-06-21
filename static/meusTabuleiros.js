@@ -1,4 +1,4 @@
-const urlTab = '/meusTabuleiros';
+const urlMeusTab = '/meusTabuleiros';
 var urlUser = '/userid';
 
 const getJSON = async url => {
@@ -17,16 +17,20 @@ const getJSON = async url => {
 
 
 function listarMeusTabuleiros() {
-    var containerTabuleiro = document.getElementById('geraTabs');
+    var containerTabuleiro = document.getElementById('meusTabs');
 
     // Pega os dados e transforma de forma usável.
-    getJSON(urlTab).then( 
-        function( response ) { // Transforma em uma lista de JSONs usável.
-        
-        //console.log(response[0].valor);
-        //console.log(response[1].valor);
-        
-        // Pega a quantidade de itens da array.
+    var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+            response = this.responseText;
+            console.log(typeof((this.responseText)));
+        }
+    };
+    xhttp.open("GET", urlMeusTab, false);
+    var a = xhttp.responseText;
+
         var tamanhoArray = response.length; 
         
         // Para cada indice na array, ele lista no HTML.
@@ -38,7 +42,7 @@ function listarMeusTabuleiros() {
             var tab_img = response[i].img;
             var tab_id = response[i].tab_id;
             
-            //Em vez de passar o id, passa a img como parametro para trocar.
+
             containerTabuleiro.innerHTML += `
             <div class="card espaco-img" style="width: 18rem;">
               <img src="`+ tab_img  + `" class="card-img-top" heigth="500px" width="500px" >
@@ -48,16 +52,14 @@ function listarMeusTabuleiros() {
             </div>
             <div class="card-footer">
                 <button type="button" class="btn btn-danger" id=`+ tab_id + `
-                onclick="usarTab(` + tab_img + `)"> Usar </button>
+                onclick="usaTabuleiro(`+ tab_img  + `)"> Comprar </button>
             </div>
 
             </div>
             <br>
         ` 
         };
-    } 
-    );
-};
+    };
 
 
 function trocarTabuleiro(){

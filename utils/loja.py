@@ -1,9 +1,10 @@
 from fastapi import APIRouter, Request
 
 from .db import con
-from models.model import tabuleiros, compras, imagensFundo
-from schemas.schema import Tabuleiro, Compra, ImagensFundo
+from models.model import tabuleiros, compras, imagensFundo #Tabelas
+from schemas.schema import Tabuleiro, Compra, ImagensFundo #Modelos/Classes
 import utils.user
+import json
 
 
 loja = APIRouter()
@@ -66,11 +67,40 @@ async def getMeusTabuleiros():
 
     playerId = utils.user.aux;
 
-    result = con.execute( tabuleiros.select().where(
-        tabuleiros.c.user_id == playerId) 
-    ).fetchall(); 
+    meusTabuleiros = con.execute( compras.select().where(compras.c.user_id == playerId )  
+    ).fetchall();
 
-    print(result);
+    # print(meusTabuleiros);
+
+    aux = list(meusTabuleiros);
+    listaTabuleiros = [];
+    
+    # print(meusTabuleiros);
+
+    for compra, userid, itemid, tipo in aux:
+        if( tipo == 1):
+            listaTabuleiros.append(itemid);
+            print( itemid );
+    
+    print(listaTabuleiros);
+
+    novaListaTabuleiros = [];
+    
+    indice = 0;
+    for item in listaTabuleiros:
+        result = con.execute( tabuleiros.select().where(
+            tabuleiros.c.tab_id == item ) 
+        ).first();
+        print(result);
+        novaListaTabuleiros.append( str(result) );
+    
+    print(novaListaTabuleiros);
+
+    print(json.dumps(novaListaTabuleiros) );
+    #return json.dumps(novaListaTabuleiros);
+
+
+    
 
 
     
