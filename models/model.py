@@ -19,5 +19,12 @@ Column("img", String(300) ),
 Column("plano_id", Integer )
 )
 
+compras = Table("compra_user", meta,
+Column("compra_id", Integer, primary_key=True),
+Column("user_id", Integer ),
+Column("item_id", Integer ),
+Column("tipo", Integer ),
+)
+
 # Conectar MySQL
 meta.create_all(engine)

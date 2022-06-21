@@ -1,5 +1,6 @@
 
-const urlTab = '/tabuleiros'
+const urlTab = '/tabuleiros';
+var urlUser = '/userid';
 
 const getJSON = async url => {
     const response = await fetch(url);
@@ -52,7 +53,8 @@ function listarTabuleiros() {
                 <p class="card-text"> `+ tab_descricao + `</p>
             </div>
             <div class="card-footer">
-                <button type="button" class="btn btn-danger" id=`+ tab_id + `> Comprar </button>
+                <button type="button" class="btn btn-danger" id=`+ tab_id + `
+                onclick="compraTabuleiro(this.id)"> Comprar </button>
             </div>
 
             </div>
@@ -65,59 +67,48 @@ function listarTabuleiros() {
 
 listarTabuleiros();
 
-// Lista os tabuleiros na tela de loja.
 
-/*
-function listarTabuleiros() {
+function compraTabuleiro(tabId) {
     
-    
-    // Lista todos os itens de tabuleiro.
-    //tabuleiros.map( (tab) => {
- 
-        //console.log("Id: " + tab.id);
-        //console.log("Nome do Tabuleiro: " + tab.nome);
-        //console.log("Descrição: " + tab.descricao);
-        //console.log("Valor (R$): " + tab.valor);
+    var user = 0; // inicializa user.
 
+    var tab_id = tabId; //Pega id do tabuleiro. 
+
+    // 1 = Tabuleiro
+    var tipo = 1;
+
+    getJSON(urlUser).then(
+        function( response ) {
+            user = response;
+
+            //console.log ( typeof(user) );
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(this.responseText);
+                    response = this.responseText;
+                    console.log(typeof( (this.responseText) ) );
+                }
+            };
+
+            xhttp.open("POST", "/compraTabuleiro", true);
+            xhttp.setRequestHeader("Content-type", "application/json");
+            xhttp.send(JSON.stringify({
+                 "user_id": user,
+                 "item_id": tab_id,
+                 "tipo": tipo
+            }));
+
+            alert('Item comprado com sucesso!');
         
-    } 
+        
+        
+        }
     );
-}
 
+    //console.log(user)
 
-// Lista os tabuleiros na tela de loja.
-function listarImagensFundo() {
-    var containerFundo = document.getElementById('imagensFundo');
     
-    // Lista todos os itens de tabuleiro.
-    fundo.map( (fundo ) => {
- 
-        //console.log("Id: " + fundo.id);
-        //console.log("Nome da Img de Fundo: " + fundo.nome);
-        //console.log("Descrição: " + fundo.descricao);
-        //console.log("Valor (R$): " + fundo.valor);
 
-        containerFundo.innerHTML += `
-
-        <div class="card espaco-img" style="width: 18rem;">
-            <img src="`+ fundo.img + `" class="card-img-top" heigth="200px" width="200px" >
-
-            <div class="card-body" padding="20px">
-                <h3 class="card-title"> ` + fundo.nome + ` </h3>
-                <p class="card-text"> ` + fundo.valor + `</p>
-                <p class="card-text"> `+ fundo.descricao + `</p>
-                <button type="button" class="btn btn-danger" id=`+ fundo.id + `> Comprar </button>
-            </div>
-            
-        </div>
-        <br>
-        ` 
-    } 
-    );
 }
-
-
-listarTabuleiros();
-listarImagensFundo();
-
-*/

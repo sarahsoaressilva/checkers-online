@@ -32,7 +32,6 @@ app.mount("/sounds", StaticFiles(directory="sounds"), name="sounds")
 app.mount("/fonts", StaticFiles(directory="fonts"), name="fonts")
 
 
-
 # Inicializa o Jinja com repositório em templates de forma estática.
 # Ele procura dentro do diretório pelos templates.
 templates = Jinja2Templates(directory="templates")
