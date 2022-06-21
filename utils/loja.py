@@ -10,9 +10,11 @@ loja = APIRouter()
 async def compraTabuleiro(tab: Tabuleiro):
     pass
 
-# Pega todos os tabuleiros e devolve como uma lista de JSON.
+# Pega todos os tabuleiros e devolve como uma lista de JSONs.
 @loja.get("/tabuleiros")
 async def getTabuleiros():
     result = con.execute( tabuleiros.select() ).fetchall();
-    return type(result);
+    
+    # print( type(result) );
+    
 

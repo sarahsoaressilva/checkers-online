@@ -57,6 +57,7 @@ async def get_cadastro(request: Request):
 async def get_game(request: Request):
     return templates.TemplateResponse("board.html", {"request": request});
 
+
 app.include_router(loja);
 
 @app.get("/loja", response_class=HTMLResponse)
