@@ -3,7 +3,7 @@ from fastapi import APIRouter, Request
 from .db import con
 from models.model import tabuleiros, compras, imagensFundo
 from schemas.schema import Tabuleiro, Compra, ImagensFundo
-from .user import player, user
+import utils.user
 
 
 loja = APIRouter()
@@ -61,13 +61,17 @@ async def getMeusTabuleiros():
     #url = app.url_path_for('userid');
     #player = RedirectResponse(url=url);
 
-   # print(player_id);
+    print("Print aux em loja.py")
+    print(utils.user.aux)
+
+    playerId = utils.user.aux;
 
     result = con.execute( tabuleiros.select().where(
-        tabuleiros.c.user_id == 0) 
+        tabuleiros.c.user_id == playerId) 
     ).fetchall(); 
 
-    return result;
+    print(result);
+
 
     
     # print( type(result) ); # list

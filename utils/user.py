@@ -5,7 +5,9 @@ from schemas.schema import User
 
 user = APIRouter();
 
-player = 1;
+aux = 0
+global player
+player = 1
 
 @user.post("/login")
 async def login(user: User):
@@ -59,11 +61,15 @@ def pesquisaUser(email: str, passwrd: str):
    # print(userInfo[0]);
 
     global player
-    player = userInfo[0];
+    player = int(userInfo[0]);
 
-    print('Variavel Pesquisa User')
-    print(player)
-  
+    print("print variavel player em user.py");
+    print(player);
+
+    global aux
+    aux = player
+
+
     if (result):
         return True
     else:
@@ -71,4 +77,4 @@ def pesquisaUser(email: str, passwrd: str):
 
 
 print('Variavel Global')
-print(player);
+print(aux);
