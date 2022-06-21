@@ -5,6 +5,8 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi.requests import Request
+from starlette.responses import RedirectResponse
+from yarg import get 
 
 from utils.user import user, pesquisaUser
 from utils.loja import loja
@@ -66,6 +68,32 @@ async def getLoja(request: Request):
 @app.get("/loja/planos", response_class=HTMLResponse)
 async def getPlanos(request: Request):
     return templates.TemplateResponse("planos.html", {"request": request});
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Classe de Conexão do Jogo.
 class ConnectionManager:

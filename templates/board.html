@@ -29,6 +29,7 @@
                             <button type="button" id="secondDeviceBtn" class="menu-button btn btn-danger btn-sm"><b> Entrar partida </b></button>
                             <button type="button" id="firstDevicesBtn" class="menu-button btn btn-danger btn-sm"><b> Convidar amigo </b></button>
                             <a type="button" id="abrirLoja" class="menu-button btn btn-success btn-sm" href="/loja"><b> Entrar na Loja </b></a>
+
                             <button type="button" class="menu-button btn btn-success btn-sm" 
                             data-toggle="modal" data-target="#passTab"><b> Trocar Tabuleiro </b></button>
                         </div>
@@ -50,11 +51,14 @@
                 </button>
                 </div>
                 <div class="modal-body">
-                ...
+                
+                <div class="geraTabs"> </div>
+
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal"> Fechar </button>
-                <button type="button" class="btn btn-primary"> Salvar mudanças </button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"> Voltar </button>
+                <button type="button" class="btn btn-primary" onclick="trocarTabuleiro()" 
+                id="salvarTab"> Salvar mudanças </button>
                 </div>
             </div>
             </div>
@@ -107,6 +111,12 @@
            //     $('#exampleModal').modal('hide');
            // });
 
+            $('#salvarTab').click(function(){
+                $('#audio1')[0].play();
+                $('#passTab').modal('hide');
+                alert('Salvo com Sucesso');
+            });
+
             $('#sameDeviceBtn').click(function(){
                 $('#audio1')[0].play();
                 $('#exampleModal').modal('hide');
@@ -139,8 +149,10 @@
             $(".nav").mouseenter(function(){
                     BeepOne.play();
             });
+            
         </script>
         <script type='module' src="/static/index.js"> </script>
         <script type='module' src="/static/ws.js"> </script>
+        <script src="/static/meusTabuleiros.js"> </script>
     </body>
 </html>

@@ -1,7 +1,10 @@
 from fastapi import APIRouter, Request
+
 from .db import con
 from models.model import tabuleiros, compras, imagensFundo
 from schemas.schema import Tabuleiro, Compra, ImagensFundo
+from .user import player, user
+
 
 loja = APIRouter()
 
@@ -52,7 +55,21 @@ async def getImagensFundo():
     # print( type(result) ); # list
     return result;
 
+@loja.get("/meusTabuleiros")
+async def getMeusTabuleiros():
+    
+    #url = app.url_path_for('userid');
+    #player = RedirectResponse(url=url);
+
+    print(player);
+
+    '''
+    result = con.execute( tabuleiros.select().where(
+        tabuleiros.c.user_id == player) 
+    ).fetchall(); 
+
+    '''
+    # print( type(result) ); # list
+    #print(result);
 
    
-    
-

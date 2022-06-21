@@ -107,8 +107,6 @@ function compraTabuleiro(tabId) {
         }
     );
 
-    //console.log(user)
-
-    
+   //console.log(user) 
 
 }

@@ -3,9 +3,10 @@ from .db import con
 from models.model import users
 from schemas.schema import User
 
-user = APIRouter()
+user = APIRouter();
 
-player = 'valorDefault';
+global player
+player = 1;
 
 @user.post("/login")
 async def login(user: User):
@@ -18,22 +19,8 @@ async def login(user: User):
     else:
         return pesquisaUser(email, password)
 
-    #    return templates.TemplateResponse("board.html", {"request": request})
-
-# Login do usuário (de acordo com ID)
-# Erro ao por no navegador. Entra em conflito com o /cadastrar.
-'''
-@user.get("/{user_id}")
-def get_users(user_id: int):
-    print(user_id)
-    return con.execute( users.select().where(users.c.user_id == user_id) ).first();
-
-  # return con.execute( users.select() ).fetchall();
-'''
 
 # Criar usuarios
-
-
 @user.post("/cadastro")
 def create_users(user: User):
 
@@ -70,10 +57,12 @@ def pesquisaUser(email: str, passwrd: str):
     ).first();
 
     # Printa Id do usuário.
-    print(userInfo[0]);
+   # print(userInfo[0]);
 
     global player
     player = userInfo[0];
+
+    print(player)
   
     if (result):
         return True
