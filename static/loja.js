@@ -16,56 +16,67 @@ const getJSON = async url => {
   }
 
 // Pega os dados e transforma de forma usável.
-getJSON(urlTab).then( 
-    function(response) {
-    console.log(response)
-}
-);
-
-
-
-
-// Modelagem JSON imagens de fundo
-const fundo = [
-    {
-        id: 0,
-        nome: 'xxxxx',
-        descricao: 'xxxx',
-        img: 'https://a.travel-assets.com/findyours-php/viewfinder/images/res40/71000/71115-Maracana-Stadium.jpg',
-        valor: 0
-    }
-];
-
-
-// Lista os tabuleiros na tela de loja.
-
 
 function listarTabuleiros() {
     var containerTabuleiro = document.getElementById('tabuleiros');
+
+    getJSON(urlTab).then( 
+        function( response ) { // Transforma em uma lista de JSONs usável.
+        
+        //console.log(response[0].valor);
+        //console.log(response[1].valor);
+        
+        // Pega a quantidade de itens da array.
+        var tamanhoArray = response.length; 
+        
+        // Para cada indice na array, ele lista no HTML.
+        for (var i = 0; i < tamanhoArray; i++) {
+            
+            //console.log("Nome:" + response[i].nome);
+
+            var tab_nome = response[i].nome;
+            var tab_valor = response[i].valor;
+            var tab_descricao = response[i].descricao;
+            var tab_img = response[i].img;
+            var tab_id = response[i].tab_id;
+            
+
+            containerTabuleiro.innerHTML += `
+            <div class="card espaco-img" style="width: 18rem;">
+              <img src="`+ tab_img  + `" class="card-img-top" heigth="500px" width="500px" >
+
+            <div class="card-body">
+                <h3 class="card-title"> ` + tab_nome + ` </h3>
+                <p class="card-text"> R$ ` + tab_valor + `</p>
+                <p class="card-text"> `+ tab_descricao + `</p>
+                <button type="button" class="btn btn-danger" id=`+ tab_id + `> Comprar </button>
+            </div>
+            
+            </div>
+            <br>
+        ` 
+        };
+    } 
+    );
+};
+
+listarTabuleiros();
+
+// Lista os tabuleiros na tela de loja.
+
+/*
+function listarTabuleiros() {
+    
     
     // Lista todos os itens de tabuleiro.
-    tabuleiros.map( (tab) => {
+    //tabuleiros.map( (tab) => {
  
         //console.log("Id: " + tab.id);
         //console.log("Nome do Tabuleiro: " + tab.nome);
         //console.log("Descrição: " + tab.descricao);
         //console.log("Valor (R$): " + tab.valor);
 
-        containerTabuleiro.innerHTML += `
-
-        <div class="card espaco-img" style="width: 18rem;">
-            <img src="`+ tab.img + `" class="card-img-top" heigth="500px" width="500px" >
-
-            <div class="card-body">
-                <h3 class="card-title"> ` + tab.nome + ` </h3>
-                <p class="card-text"> ` + tab.valor + `</p>
-                <p class="card-text"> `+ tab.descricao + `</p>
-                <button type="button" class="btn btn-danger" id=`+ tab.id + `> Comprar </button>
-            </div>
-            
-        </div>
-        <br>
-        ` 
+        
     } 
     );
 }
@@ -106,3 +117,4 @@ function listarImagensFundo() {
 listarTabuleiros();
 listarImagensFundo();
 
+*/
