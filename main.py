@@ -129,6 +129,7 @@ async def websocket_endpoint(websocket: WebSocket, client_id: int, first_device:
 
     except WebSocketDisconnect:
 
+        # Printa a abertura da conexão no console da API
         print("websocket closed", client_id)
         manager.disconnect(websocket, client_id)
         # await manager.send_message(f'Player has left', client_id)

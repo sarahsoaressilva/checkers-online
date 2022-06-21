@@ -57,6 +57,9 @@ export const inviteSecondPlayer = () => {
         return Math.floor(Math.random() * max);
     }
 
+    //Como criar salas fixas
+    // href = ws://127.0.0.1/ws/1/true
+    // WebSocket(`${ws_scheme}${window.location.host}/ws/${client_id}/${true}`)
     let client_id = getRandomId(10000);
 
     const invitation = document.createElement('div');
