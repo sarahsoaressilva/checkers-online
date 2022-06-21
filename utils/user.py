@@ -5,7 +5,7 @@ from schemas.schema import User
 
 user = APIRouter()
 
-player = 'player1';
+player = 'valorDefault';
 
 @user.post("/login")
 async def login(user: User):
@@ -52,6 +52,7 @@ def create_users(user: User):
 
 @user.get("/userid")
 def getUsername():
+    print(player);
     return player;
 
 # Pesquisa de usuário para o login

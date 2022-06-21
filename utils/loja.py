@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Request
 from .db import con
 from models.model import tabuleiros, compras, imagensFundo
-from schemas.schema import Tabuleiro, Compra
+from schemas.schema import Tabuleiro, Compra, ImagensFundo
 
 loja = APIRouter()
 
@@ -21,6 +21,23 @@ async def compraTabuleiro(compraTab: Compra):
 
     print(result)  # Responde um cursor como sucesso.
     return con.execute( compras.select().where(compras.c.user_id == result.lastrowid)).first()  
+
+# Função de compra de imagens.
+@loja.post("/compraImagensFundo")
+async def compraImagem(compraImg: Compra):
+
+    novaImg = {
+        "user_id": compraImg.user_id,
+        "item_id": compraImg.item_id,
+        "tipo": compraImg.tipo
+    }
+
+    # print(new_user);
+    # Query de Insert na Tabela.
+    result = con.execute( compras.insert().values( novaImg ) )
+
+    print(result)  # Responde um cursor como sucesso.
+    return con.execute( compras.select().where(compras.c.user_id == result.lastrowid)).first() 
 
 # Pega todos os tabuleiros e devolve como uma lista de JSONs.
 @loja.get("/tabuleiros")
