@@ -69,9 +69,7 @@ listarTabuleiros();
 
 
 function compraTabuleiro(tabId) {
-    
     var user = 0; // inicializa user.
-
     var tab_id = tabId; //Pega id do tabuleiro. 
 
     // 1 = Tabuleiro
@@ -101,12 +99,54 @@ function compraTabuleiro(tabId) {
             }));
 
             alert('Item comprado com sucesso!');
-        
-        
-        
         }
     );
 
    //console.log(user) 
 
 }
+
+
+
+function listarMeusTabuleiros() {
+    var containerTabuleiro = document.getElementById('meusTabs');
+
+    // Pega os dados e transforma de forma usável.
+    getJSON(urlTab).then( 
+        function( response ) { // Transforma em uma lista de JSONs usável.
+        
+        //console.log(response[0].valor);
+        //console.log(response[1].valor);
+        
+        // Pega a quantidade de itens da array.
+        var tamanhoArray = response.length; 
+        
+        // Para cada indice na array, ele lista no HTML.
+        for (var i = 0; i < tamanhoArray; i++) {
+            
+            //console.log("Nome:" + response[i].nome);
+
+            var tab_nome = response[i].nome;
+            var tab_img = response[i].img;
+            var tab_id = response[i].tab_id;
+            
+
+            containerTabuleiro.innerHTML += `
+            <div class="card espaco-img" style="width: 18rem;">
+              <img src="`+ tab_img  + `" class="card-img-top" heigth="500px" width="500px" >
+
+            <div class="card-body">
+                <h3 class="card-title"> ` + tab_nome + ` </h3>
+            </div>
+            <div class="card-footer">
+                <button type="button" class="btn btn-danger" id=`+ tab_id + `
+                onclick="usaTabuleiro(`+ tab_img  + `)"> Comprar </button>
+            </div>
+
+            </div>
+            <br>
+        ` 
+        };
+    } 
+    );
+};

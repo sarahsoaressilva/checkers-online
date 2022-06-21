@@ -61,14 +61,15 @@ async def getMeusTabuleiros():
     #url = app.url_path_for('userid');
     #player = RedirectResponse(url=url);
 
-    print(player);
+   # print(player_id);
 
-    '''
     result = con.execute( tabuleiros.select().where(
-        tabuleiros.c.user_id == player) 
+        tabuleiros.c.user_id == 0) 
     ).fetchall(); 
 
-    '''
+    return result;
+
+    
     # print( type(result) ); # list
     #print(result);
 

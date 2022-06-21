@@ -32,6 +32,9 @@
 
                             <button type="button" class="menu-button btn btn-success btn-sm" 
                             data-toggle="modal" data-target="#passTab"><b> Trocar Tabuleiro </b></button>
+
+                            <button type="button" class="menu-button btn btn-success btn-sm" 
+                            data-toggle="modal" data-target="#passImg"><b> Trocar Background </b></button>
                         </div>
                     </div>
                 </div>
@@ -52,13 +55,36 @@
                 </div>
                 <div class="modal-body">
                 
-                <div class="geraTabs"> </div>
+                <div class="meusTabs"> </div>
 
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"> Voltar </button>
-                <button type="button" class="btn btn-primary" onclick="trocarTabuleiro()" 
-                id="salvarTab"> Salvar mudanças </button>
+                <button type="button" class="btn btn-primary"  id="salvarTab"> Salvar mudanças </button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="passImg" tabindex="-1" role="dialog" 
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"> Seus Backgrounds </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                
+                <div class="meusFundos"> </div>
+
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"> Voltar </button>
+                <button type="button" class="btn btn-primary"  id="salvarFundo"> Salvar mudanças </button>
                 </div>
             </div>
             </div>
@@ -117,6 +143,12 @@
             $('#salvarTab').click(function(){
                 $('#audio1')[0].play();
                 $('#passTab').modal('hide');
+                alert('Salvo com Sucesso');
+            });
+
+            $('#salvarFundo').click(function(){
+                $('#audio1')[0].play();
+                $('#passImg').modal('hide');
                 alert('Salvo com Sucesso');
             });
 
